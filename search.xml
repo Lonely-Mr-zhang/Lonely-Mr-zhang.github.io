@@ -12,25 +12,14 @@
       </tags>
   </entry>
   <entry>
-    <title>hello world test</title>
-    <url>/2020/06/10/hello-world-test/</url>
-    <content><![CDATA[<h3 id="测试了，成功了"><a href="#测试了，成功了" class="headerlink" title="测试了，成功了"></a>测试了，成功了</h3>]]></content>
+    <title>spring概述</title>
+    <url>/2020/06/11/spring%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>测试1</category>
+        <category>JAVA</category>
       </categories>
       <tags>
-        <tag>Html</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hello world</title>
-    <url>/2020/06/10/hello-world/</url>
-    <content><![CDATA[<h3 id="测试了，成功了"><a href="#测试了，成功了" class="headerlink" title="测试了，成功了"></a>测试了，成功了</h3>]]></content>
-      <categories>
-        <category>测试2</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
 </search>
