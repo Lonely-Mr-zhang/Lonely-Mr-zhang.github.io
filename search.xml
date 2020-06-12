@@ -14,12 +14,10 @@
 <h3 id="方便程序的测试"><a href="#方便程序的测试" class="headerlink" title="方便程序的测试"></a>方便程序的测试</h3><p>可以用非容器依赖的编程方式进行几乎所有的测试工作，测试不再是昂贵的操作，而是随手可做的事情。</p>
 <h3 id="方便集成各种优秀框架"><a href="#方便集成各种优秀框架" class="headerlink" title="方便集成各种优秀框架"></a>方便集成各种优秀框架</h3><p>Spring可以降低各种框架的使用难度，提供了对各种优秀框架的直接支持。</p>
 <h3 id="降低java-EE-api的使用难度"><a href="#降低java-EE-api的使用难度" class="headerlink" title="降低java EE api的使用难度"></a>降低java EE api的使用难度</h3><p>Spring对JavaEE API（JDBC、JavaMail、远程调用等）进行了封装，使这些API的使用难度大大降低。</p>
-<h3 id="远吗是经典学习的案例"><a href="#远吗是经典学习的案例" class="headerlink" title="远吗是经典学习的案例"></a>远吗是经典学习的案例</h3><p>Spring的源码设计精妙、结构清晰、匠心独用、处处体现着大师对java设计模式灵活运用以及对java技术的高深造诣，它的源码无疑是java技术的最佳实践的范例。</p>
+<h3 id="源码是经典学习的案例"><a href="#源码是经典学习的案例" class="headerlink" title="源码是经典学习的案例"></a>源码是经典学习的案例</h3><p>Spring的源码设计精妙、结构清晰、匠心独用、处处体现着大师对java设计模式灵活运用以及对java技术的高深造诣，它的源码无疑是java技术的最佳实践的范例。</p>
 <blockquote>
 <h2 id="Spring体系结构"><a href="#Spring体系结构" class="headerlink" title="Spring体系结构"></a>Spring体系结构</h2></blockquote>
 <p><img src="/images/spring-overview.png" alt="Spring体系结构图" title="Spring体系结构图"></p>
-<blockquote>
-<h2 id="Spring的两大核心"><a href="#Spring的两大核心" class="headerlink" title="Spring的两大核心"></a>Spring的两大核心</h2></blockquote>
 <h1 id="程序的耦合及解藕"><a href="#程序的耦合及解藕" class="headerlink" title="程序的耦合及解藕"></a>程序的耦合及解藕</h1><blockquote>
 <h2 id="曾经项目中的问题"><a href="#曾经项目中的问题" class="headerlink" title="曾经项目中的问题"></a>曾经项目中的问题</h2></blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.lonelyMrZhang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 程序耦合事例</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: lonely.mr.zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2020/6/11 8:42 下午</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line"><span class="comment">//        1、注册驱动</span></span><br><span class="line">        DriverManager.registerDriver(<span class="keyword">new</span> com.mysql.jdbc.Driver());</span><br><span class="line"><span class="comment">//        2、获取连接</span></span><br><span class="line">        Connection con = DriverManager.getConnection(<span class="string">"jdbc:mysql://192.168.31.254:3306/coupling_code"</span>, <span class="string">"root"</span>, <span class="string">"2486"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        3、获取操作数据库的预处理对象</span></span><br><span class="line">        PreparedStatement preparedStatement = con.prepareStatement(<span class="string">"select * from account"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        4、执行sql，得到结果集</span></span><br><span class="line">        ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line"><span class="comment">//        5、遍历结果</span></span><br><span class="line">        <span class="keyword">while</span> (resultSet.next())&#123;</span><br><span class="line">            System.out.println(resultSet.getString(<span class="string">"name"</span>));</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        6、释放资源</span></span><br><span class="line">        resultSet.close();</span><br><span class="line">        preparedStatement.close();</span><br><span class="line">        con.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -39,9 +37,10 @@
 <p>在需要创建对象的地方通过BeanFactory工厂创建，如下所示：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//        IAccountService accountService = new AccountServiceImpl();</span></span><br><span class="line">        IAccountService accountService = (IAccountService) BeanFactory.getBean(<span class="string">"accountService"</span>);</span><br></pre></td></tr></table></figure>
 <p>通过以上方式就可降低代码间的耦合程度，当AccountServiceImpl实现类不存在时，只会产生运行时异常，而不会在编译器就出错。</p>
-<h1 id="IOC的概念和Spring中的IOC"><a href="#IOC的概念和Spring中的IOC" class="headerlink" title="IOC的概念和Spring中的IOC"></a>IOC的概念和Spring中的IOC</h1><blockquote>
-<h2 id="Spring中基于XML的IOC环境搭建"><a href="#Spring中基于XML的IOC环境搭建" class="headerlink" title="Spring中基于XML的IOC环境搭建"></a>Spring中基于XML的IOC环境搭建</h2></blockquote>
-<h1 id="依赖注入（Dependency-Injection）"><a href="#依赖注入（Dependency-Injection）" class="headerlink" title="依赖注入（Dependency Injection）"></a>依赖注入（Dependency Injection）</h1>]]></content>
+<p>上述方案的Bean工厂获取对象时每次都会创建一个新的实例，而在我们平时的开发过程中，service、dao对象都为单例模式模式，所以我们可以将BeanFactory设计为单例模式从而进一步优化。见链接代码。</p>
+<p><a href="https://github.com/Lonely-Mr-zhang/couplingCode02" target="_blank" rel="noopener">项目GitHub地址</a></p>
+<h1 id="IOC的概念"><a href="#IOC的概念" class="headerlink" title="IOC的概念"></a>IOC的概念</h1><p>IOC（控制反转）把创建对象的权利交给框架，是框架的重要特征，包括依赖注入（DI）和依赖查找（Dependency Lookup）,IOC的作用就是削减程序中的耦合。</p>
+]]></content>
       <categories>
         <category>JAVA</category>
       </categories>
@@ -58,6 +57,29 @@
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Spring IOC削减耦合</title>
+    <url>/2020/06/12/%E4%BD%BF%E7%94%A8Spring-IOC%E5%89%8A%E5%87%8F%E8%80%A6%E5%90%88/</url>
+    <content><![CDATA[<p><a href="https://repo.spring.io/libs-release-local/org/springframework/" target="_blank" rel="noopener">Spring源码下载地址</a></p>
+<blockquote>
+<h2 id="Spring中基于XML的IOC环境搭建"><a href="#Spring中基于XML的IOC环境搭建" class="headerlink" title="Spring中基于XML的IOC环境搭建"></a>Spring中基于XML的IOC环境搭建</h2></blockquote>
+<ol>
+<li>pom.xml中引入Spring依赖<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Spring依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>在resources目录下创建配置文件bean.xml(名称可改变)</li>
+<li>导入约束 在Spring源码中的 spring-framework-5.0.2.RELEASE/docs/spring-framework-reference/index.html中点击core，然后搜索xmlns，将搜到的约束拷贝。<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="依赖注入（Dependency-Injection）"><a href="#依赖注入（Dependency-Injection）" class="headerlink" title="依赖注入（Dependency Injection）"></a>依赖注入（Dependency Injection）</h1><blockquote>
+<h2 id="Spring的两大核心"><a href="#Spring的两大核心" class="headerlink" title="Spring的两大核心"></a>Spring的两大核心</h2></blockquote>
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
       </tags>
   </entry>
 </search>
