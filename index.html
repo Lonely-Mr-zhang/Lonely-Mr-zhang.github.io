@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-13 00:31:16" itemprop="dateModified" datetime="2020-06-13T00:31:16+08:00">2020-06-13</time>
+                <time title="修改时间：2020-06-14 16:54:09" itemprop="dateModified" datetime="2020-06-14T16:54:09+08:00">2020-06-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,14 +248,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>775</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -271,12 +271,32 @@
 <blockquote>
 <h2 id="Spring中基于XML的IOC环境搭建"><a href="#Spring中基于XML的IOC环境搭建" class="headerlink" title="Spring中基于XML的IOC环境搭建"></a>Spring中基于XML的IOC环境搭建</h2></blockquote>
 <ol>
-<li>pom.xml中引入Spring依赖<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Spring依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>在resources目录下创建配置文件bean.xml(名称可改变)</li>
-<li>导入约束 在Spring源码中的 spring-framework-5.0.2.RELEASE/docs/spring-framework-reference/index.html中点击core，然后搜索xmlns，将搜到的约束拷贝。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<li>pom.xml中引入Spring依赖<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Spring依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
+<p>2.在resources目录下创建配置文件bean.xml(名称可改变)<br>3.导入约束 在Spring源码中的 spring-framework-5.0.2.RELEASE/docs/spring-framework-reference/index.html中点击core，然后搜索xmlns，将搜到的约束拷贝。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4、将对象的创建交给Spring管理，在bean.xml中添加如下<code>&lt;bean&gt;</code>标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;accountService&quot; class&#x3D;&quot;io.github.lonelyMrZhang.service.impl.AccountServiceImpl&quot;&gt;&lt;&#x2F;bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id&#x3D;&quot;accountDao&quot; class&#x3D;&quot;io.github.lonelyMrZhang.dao.impl.AccountDaoImpl&quot;&gt;&lt;&#x2F;bean&gt;</span><br></pre></td></tr></table></figure>
+<p>5、获取Spring的IOC核心容器，并根据id获取对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.lonelyMrZhang.ui;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.lonelyMrZhang.dao.IAccountDao;</span><br><span class="line"><span class="comment">//import io.github.lonelyMrZhang.factory.BeanFactory;</span></span><br><span class="line"><span class="keyword">import</span> io.github.lonelyMrZhang.service.IAccountService;</span><br><span class="line"><span class="keyword">import</span> io.github.lonelyMrZhang.service.impl.AccountServiceImpl;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 模拟表现层，调用业务层</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: lonely.mr.zhang</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2020/6/12 12:53 上午</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取Spring的IOC核心容器，并根据id获取对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1、获取核心容器</span></span><br><span class="line">        ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"bean.xml"</span>);</span><br><span class="line">        <span class="comment">//2、根据id获取对象</span></span><br><span class="line">        IAccountService accountService = (IAccountService)ac.getBean(<span class="string">"accountService"</span>);</span><br><span class="line">        IAccountDao accountDao =  ac.getBean(<span class="string">"accountDao"</span>, IAccountDao<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(accountService);</span><br><span class="line">        System.out.println(accountService);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="ApplicationContext-三个常用实现类之间的区别"><a href="#ApplicationContext-三个常用实现类之间的区别" class="headerlink" title="ApplicationContext 三个常用实现类之间的区别"></a>ApplicationContext 三个常用实现类之间的区别</h3><p><code>IDEA</code>中光标停留在要查看的类上 按下<code>ctrl + h</code>便可查看该类的所有实现类：</p>
+<p><img src="/images/ApplicationContext%E5%AE%9E%E7%8E%B0%E7%B1%BB.png" alt="ApplicationContext实现类" title="ApplicationContext实现类"></p>
+<ul>
+<li>ClassPathXmlApplicationContext：可以加载类路径下的配置文件，要求配置文件必须在类路径下，不在类路径下加载不了。比较常用。</li>
+<li>FileSystemXmlApplicationContext：可以加载磁盘任意路径下的有权限的配置文件</li>
+<li>AnnotationConfigApplicationContext：读取注解创建文件。</li>
+</ul>
+<h3 id="IOC容器构建的两种方式"><a href="#IOC容器构建的两种方式" class="headerlink" title="IOC容器构建的两种方式"></a>IOC容器构建的两种方式</h3><ul>
+<li><p>懒汉模式<br>通过BeanFactory构建Spring容器时，采用延迟加载的策略创建对象，即：什么时候根据id获取对象，什么时候真正的创建对象。适用多例模式</p>
+</li>
+<li><p>饿汉模式<br>通过ApplicationContext构建Spring核心容器时，采用立即加载的策略创建对象，即：只要一读取完配置文件马上就要创建配置文件中配置的对象。适用单例模式</p>
+</li>
+</ul>
+<p><a href="https://github.com/Lonely-Mr-zhang/springIOC" target="_blank" rel="noopener">项目GitHub地址</a></p>
 <h1 id="依赖注入（Dependency-Injection）"><a href="#依赖注入（Dependency-Injection）" class="headerlink" title="依赖注入（Dependency Injection）"></a>依赖注入（Dependency Injection）</h1><blockquote>
 <h2 id="Spring的两大核心"><a href="#Spring的两大核心" class="headerlink" title="Spring的两大核心"></a>Spring的两大核心</h2></blockquote>
 
@@ -329,7 +349,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-12 23:15:36" itemprop="dateModified" datetime="2020-06-12T23:15:36+08:00">2020-06-12</time>
+                <time title="修改时间：2020-06-14 15:02:18" itemprop="dateModified" datetime="2020-06-14T15:02:18+08:00">2020-06-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -630,12 +650,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">6k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
