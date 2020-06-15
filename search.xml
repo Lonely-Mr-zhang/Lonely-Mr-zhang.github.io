@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Markdown语法</title>
+    <url>/2020/06/10/Markdown%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="多级列表"><a href="#多级列表" class="headerlink" title="多级列表"></a>多级列表</h4><ul>
+<li>1<ul>
+<li>1.1</li>
+</ul>
+</li>
+<li>2<ul>
+<li>2.1</li>
+</ul>
+</li>
+</ul>
+<h4 id="第二个多级列表"><a href="#第二个多级列表" class="headerlink" title="第二个多级列表"></a>第二个多级列表</h4><ul>
+<li>1<ul>
+<li>1.1</li>
+</ul>
+</li>
+<li>2<pre><code>- 2.1</code></pre></li>
+</ul>
+<p>备注：四个空格才能实现多级列表，八个空格不能实现多级列表</p>
+]]></content>
+      <categories>
+        <category>Markdown语法</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring对Bean的管理细节</title>
     <url>/2020/06/15/Spring%E5%AF%B9Bean%E7%9A%84%E7%AE%A1%E7%90%86%E7%BB%86%E8%8A%82/</url>
     <content><![CDATA[<h3 id="创建Bean的三种方式"><a href="#创建Bean的三种方式" class="headerlink" title="创建Bean的三种方式"></a>创建Bean的三种方式</h3><ul>
@@ -30,7 +59,25 @@
 </ul>
 </li>
 </ul>
-<h3 id="Bean对象的生命周期"><a href="#Bean对象的生命周期" class="headerlink" title="Bean对象的生命周期"></a>Bean对象的生命周期</h3><h1 id="依赖注入（Dependency-Injection）"><a href="#依赖注入（Dependency-Injection）" class="headerlink" title="依赖注入（Dependency Injection）"></a>依赖注入（Dependency Injection）</h1><blockquote>
+<h3 id="Bean对象的生命周期"><a href="#Bean对象的生命周期" class="headerlink" title="Bean对象的生命周期"></a>Bean对象的生命周期</h3><ul>
+<li><p>单例对象：</p>
+<ul>
+<li>出生：当容器创建时对象出生</li>
+<li>存活：只要容器还在，对象一直存活</li>
+<li>死亡：容器销毁，对象死亡</li>
+<li>总结：单例对象的生命周期和容器相同</li>
+</ul>
+</li>
+<li><p>多例对象：</p>
+<pre><code>- 出生：当我们使用对象时，Spring为我们创建
+- 存活：对象只要在使用过程中就一直活着
+- 死亡：当对象长时间不用，且没有别的对象引用时，由java的垃圾回收器回收</code></pre></li>
+</ul>
+<p><a href="https://github.com/Lonely-Mr-zhang/springBean" target="_blank" rel="noopener">项目GitHub地址</a></p>
+<h3 id="依赖注入（Dependency-Injection）"><a href="#依赖注入（Dependency-Injection）" class="headerlink" title="依赖注入（Dependency Injection）"></a>依赖注入（Dependency Injection）</h3><p>IOC的作用：降低程序间的依赖关系（耦合）</p>
+<p>依赖关系的管理：以后都交给Spring来维护在当前类需要用到其他类的对象，由Spring为我们提供，我们只需要在配置文件中说明依赖关系的维护。</p>
+<p>依赖注入：依赖关系的维护，就称之为依赖注入。</p>
+<blockquote>
 <h2 id="Spring的两大核心"><a href="#Spring的两大核心" class="headerlink" title="Spring的两大核心"></a>Spring的两大核心</h2></blockquote>
 ]]></content>
       <categories>
@@ -86,17 +133,6 @@
       </categories>
       <tags>
         <tag>spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cateporiesTest</title>
-    <url>/2020/06/10/cateporiesTest/</url>
-    <content><![CDATA[<h3 id="测试0"><a href="#测试0" class="headerlink" title="测试0"></a>测试0</h3>]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
