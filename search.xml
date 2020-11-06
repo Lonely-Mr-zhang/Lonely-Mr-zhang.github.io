@@ -524,13 +524,24 @@
   <entry>
     <title>Netcat-网络测试工具</title>
     <url>/2020/08/04/Netcat-%E7%BD%91%E7%BB%9C%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>基本工具</p>
+    <content><![CDATA[<p>netcat是网络工具中的瑞士军刀</p>
 ]]></content>
       <categories>
         <category>渗透测试</category>
       </categories>
       <tags>
         <tag>基本工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue源码分析</title>
+    <url>/2020/11/06/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3>]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
       </tags>
   </entry>
 </search>
