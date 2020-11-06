@@ -536,7 +536,17 @@
   <entry>
     <title>vue源码分析</title>
     <url>/2020/11/06/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3>]]></content>
+    <content><![CDATA[<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li>分析vue作为一个MVVM框架的基本实现原理<ul>
+<li>数据代理</li>
+<li>模板解析</li>
+<li>数据绑定</li>
+</ul>
+</li>
+<li>不直接看vue.js的源码</li>
+<li>剖析github上网友模仿vue实现的mvvm库，地址：<a href="https://github.com/DMQ/mvvm" target="_blank" rel="noopener">https://github.com/DMQ/mvvm</a></li>
+</ul>
+]]></content>
       <categories>
         <category>前端</category>
       </categories>
